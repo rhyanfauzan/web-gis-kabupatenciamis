@@ -42,6 +42,33 @@ Route::get('/penerimabantuan', function () {
 Route::get('/hasilpelaksanaan', function () {
     return view('pages/layanan/hasilpelaksanaan');
 });
+Route::get('/perekaman', function () {
+    return view('pages/layanan/perekaman');
+});
+Route::get('/psu', function () {
+    return view('pages/layanan/psu');
+});
+
+// Map
+Route::get('/map-desa', function () {
+    return view('pages/map/desa');
+});
+Route::get('/map-kecamatan', function () {
+    return view('pages/map/kecamatan');
+});
+
+Route::get('/rawan-bencana', function () {
+    return view('pages/rawan-bencana');
+});
+Route::get('/kawasan-kumuh', function () {
+    return view('pages/kawasan-kumuh');
+});
+Route::get('/backlog', function () {
+    return view('pages/backlog');
+});
+Route::get('/pengelolaan-user', function () {
+    return view('pages/pengelolaan-user');
+});
 
 /*App*/
 Route::get('/app-emailbox', function () {
