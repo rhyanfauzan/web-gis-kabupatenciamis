@@ -383,7 +383,28 @@
 					</div>
 				</div>
 			</div>
+			<hr>
+			<!-- map & chart -->
+			<div class="row">
+				<!-- map  -->
+				<div class="col-lg-9 mx-auto">
+					<!-- <h6 class="text-uppercase">Area rawan bencana</h6> -->
+					<!-- <hr /> -->
+					<!-- chart  -->
+					<!-- <h6 class="mb-0 text-uppercase">Doughnut Chart</h6> -->
+					<!-- <hr /> -->
+					<div class="card">
+						<div class="card-body">
+							<div class="chart-container1">
+								<canvas id="chart-hunian"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
 		</div>
+	</div>
 	</div>
 	<!--end page wrapper -->
 	@endsection
@@ -407,4 +428,8 @@
 				.appendTo('#example2_wrapper .col-md-6:eq(0)');
 		});
 	</script>
+
+	<!-- chart  -->
+	<script src="assets/plugins/chartjs/js/Chart.min.js"></script>
+	<script src="assets/plugins/chartjs/js/chartjs-custom.js"></script>
 	@endsection

@@ -2,6 +2,7 @@
 
 	@section("style")
 	<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+	<!-- <link href="assets/plugins/highcharts/css/highcharts.css" rel="stylesheet" /> -->
 	@endsection
 
 	@section("wrapper")
@@ -285,6 +286,60 @@
 					</div>
 				</div>
 			</div>
+			<hr>
+			<!-- map & chart -->
+			<div class="row">
+				<!-- map  -->
+				<div class="col-lg-9 mx-auto">
+					<!-- <h6 class="text-uppercase">Area rawan bencana</h6> -->
+					<!-- <hr /> -->
+					<div class="card">
+						<div class="card-body">
+							<div id="simple-map-desa" class="gmaps"></div>
+						</div>
+					</div>
+				</div>
+				<!-- card  -->
+				<div class="col-lg-3 mx-auto">
+					<div class="card radius-10 overflow-hidden">
+						<div class="card-body">
+							<div class="d-flex align-items-center">
+								<div>
+									<p class="mb-0 text-primary font-14">Rumah layak huni</p>
+									<h5 class="my-0 text-primary">32</h5>
+								</div>
+								<div class="text-primary ms-auto font-30"><i class='bx bx-home-smile'></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- row 3  -->
+					<div class="card radius-10 overflow-hidden">
+						<div class="card-body">
+							<div class="d-flex align-items-center">
+								<div>
+									<p class="mb-0 text-secondary font-14">Tidak layak huni</p>
+									<h5 class="my-0 text-secondary">15</h5>
+								</div>
+								<div class="text-secondary ms-auto font-30"><i class='bx bx-home-circle'></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- chart  -->
+					<!-- <h6 class="mb-0 text-uppercase">Doughnut Chart</h6> -->
+					<!-- <hr /> -->
+					<div class="card">
+						<div class="card-body">
+							<div class="chart-container1">
+								<canvas id="chart-hunian"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!--end page wrapper -->
@@ -309,4 +364,10 @@
 				.appendTo('#example2_wrapper .col-md-6:eq(0)');
 		});
 	</script>
+	<!-- google maps api -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4&callback=initMap" async defer></script>
+	<script src="assets/plugins/gmaps/map-custom-script.js"></script>
+	<!-- chart  -->
+	<script src="assets/plugins/chartjs/js/Chart.min.js"></script>
+	<script src="assets/plugins/chartjs/js/chartjs-custom.js"></script>
 	@endsection

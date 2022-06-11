@@ -171,7 +171,7 @@
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>
-                    <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                    <li><a class="dropdown-item" href="{{ url('login') }}"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
                     </li>
                 </ul>
             </div>

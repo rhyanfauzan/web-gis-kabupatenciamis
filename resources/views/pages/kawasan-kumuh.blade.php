@@ -12,14 +12,14 @@
 		<div class="page-content">
 			<!--breadcrumb-->
 			<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-				<div class="breadcrumb-title pe-3">Area rawan bencana
+				<div class="breadcrumb-title pe-3">Kawasan kumuh
 				</div>
 				<div class="ps-3">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb mb-0 p-0">
 							<li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-receipt'></i></a>
 							</li>
-							<li class="breadcrumb-item active" aria-current="page">Daftar area rawan bencana
+							<li class="breadcrumb-item active" aria-current="page">Daftar kawasan kumuh
 							</li>
 						</ol>
 					</nav>
@@ -40,10 +40,10 @@
 							<thead>
 								<tr>
 									<th>Nama area</th>
-									<th>Estimasi bencana</th>
+									<th>Luas area</th>
 									<th>Desa</th>
 									<th>Kecamatan</th>
-									<th>Foto kawasan</th>
+									<th>Foto area</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -56,12 +56,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -74,12 +73,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -92,12 +90,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -110,12 +107,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -128,12 +124,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -146,12 +141,11 @@
 									<td>Buni Seuri</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -163,12 +157,11 @@
 									<td>Buni Seuri</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									<td>
 
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -180,12 +173,11 @@
 									<td>Buni Seuri</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -198,12 +190,11 @@
 									<td>Buni Seuri</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -216,12 +207,11 @@
 									<td>Buni Seuri</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -234,12 +224,11 @@
 									<td>Buni Seuri</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -252,12 +241,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -270,12 +258,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -288,12 +275,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -306,12 +292,11 @@
 									<td>Cikijing</td>
 									<td>
 										<a href="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90">
-											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto kawasan" style="height: 40px;">
+											<img src="https://awsimages.detik.net.id/community/media/visual/2020/08/12/puncak-bangku-ciamis_169.jpeg?w=600&q=90" alt="Foto area" style="height: 40px;">
 										</a>
 									</td>
 									</td>
 									<td>
-										<a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
@@ -336,7 +321,7 @@
 				<hr>
 
 				<!-- map  -->
-				<div class="col-lg-9 mx-auto">
+				<div class="col-lg-8 mx-auto">
 					<!-- <h6 class="text-uppercase">Area rawan bencana</h6> -->
 					<!-- <hr /> -->
 					<div class="card">
@@ -345,11 +330,32 @@
 						</div>
 					</div>
 				</div>
-				<!-- chart  -->
-				<div class="col-lg-3 mx-auto">
-					<div class="card">
+				<!-- col right -->
+				<div class="col-lg-4 col-8 mx-auto">
+					<div class="card radius-10 overflow-hidden">
 						<div class="card-body">
-							<div id="chart-arb"></div>
+							<div class="d-flex align-items-center">
+								<div>
+									<p class="mb-0 text-success font-14">Total Kawasan Kumuh</p>
+									<h5 class="my-0 text-success">32</h5>
+								</div>
+								<div class="text-success ms-auto font-30"><i class='bx bx-confused'></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- row 3  -->
+					<div class="card radius-10 overflow-hidden">
+						<div class="card-body">
+							<div class="d-flex align-items-center">
+								<div>
+									<p class="mb-0 text-warning font-14">Total Luas Wilayah Kumuh</p>
+									<h5 class="my-0 text-warning">192982 (m<sup>2</sup>)</h5>
+								</div>
+								<div class="text-warning ms-auto font-30"><i class='bx bxs-map-alt'></i>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

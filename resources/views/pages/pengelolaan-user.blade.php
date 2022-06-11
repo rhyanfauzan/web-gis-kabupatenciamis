@@ -10,13 +10,15 @@
 		<div class="page-content">
 			<!--breadcrumb-->
 			<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-				<div class="breadcrumb-title pe-3">Perumahan</div>
+				<div class="breadcrumb-title pe-3">Pengelolaan user
+				</div>
 				<div class="ps-3">
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb mb-0 p-0">
-							<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-building-house"></i></a>
+							<li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-user-check'></i></i></a>
 							</li>
-							<li class="breadcrumb-item active" aria-current="page">Daftar Perumahan</li>
+							<li class="breadcrumb-item active" aria-current="page">Pengelolaan user
+							</li>
 						</ol>
 					</nav>
 				</div>
@@ -35,11 +37,9 @@
 							<!-- judul  -->
 							<thead>
 								<tr>
-									<th>Nama perumahan</th>
-									<th>No IMB</th>
-									<th>Tanggal IMB</th>
-									<th>Pengembang</th>
-									<th>Perusahaan</th>
+									<th>Nama</th>
+									<th>Email</th>
+									<th>Role</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -47,207 +47,161 @@
 							<tbody>
 								<tr>
 									<td>Tiger Nixon</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										PT. Sampoerna
-									</td>
+									<td>user@gmail.com</td>
+									<td>User</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Garrett Winters</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										PT. Sampoerna
-									</td>
+									<td>user@gmail.com</td>
+									<td>User</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Ashton Cox</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										PT. Sampoerna
-									</td>
+									<td>user@gmail.com</td>
+									<td>User</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Cedric Kelly</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										PT. Sampoerna
-									</td>
+									<td>user@gmail.com</td>
+									<td>User</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Airi Satou</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										PT. Sampoerna
-									</td>
+									<td>user@gmail.com</td>
+									<td>User</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Brielle Williamson</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Waskita</td>
-									<td>
-										PT. Sampoerna
-									</td>
+									<td>user@gmail.com</td>
+									<td>User</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Herrod Chandler</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Waskita</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
-										Wijayakarta
-									</td>
-									<td>
+
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Rhona Davidson</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Waskita</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Colleen Hurst</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Waskita</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Sonya Frost</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Waskita</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Jena Gaines</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Waskita</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Quinn Flynn</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Charde Marshall</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Haley Kennedy</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 								<tr>
 									<td>Donna Snider</td>
-									<td>1101</td>
-									<td>14-05-2020</td>
-									<td>Adhi Karya</td>
-									<td>
-										Wijayakarta
-									</td>
+									<td>admin@gmail.com</td>
+									<td>Administrator</td>
 									<td>
 										<a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
 										<a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
 									</td>
+
 								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
-									<th>Nama perumahan</th>
-									<th>No IMB</th>
-									<th>Tanggal IMB</th>
-									<th>Pengembang</th>
-									<th>Perusahaan</th>
+									<th>Nama</th>
+									<th>Email</th>
+									<th>Role</th>
 									<th>Aksi</th>
 								</tr>
 							</tfoot>
@@ -255,22 +209,7 @@
 					</div>
 				</div>
 			</div>
-			<hr>
-			<!-- map & chart -->
-			<div class="row">
-				<!-- map  -->
-				<div class="col-lg-9 mx-auto">
-					<!-- <h6 class="text-uppercase">Area rawan bencana</h6> -->
-					<!-- <hr /> -->
-					<div class="card">
-						<div class="card-body">
-							<div id="simple-map-desa" class="gmaps"></div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-	</div>
 	</div>
 	<!--end page wrapper -->
 	@endsection
@@ -294,8 +233,4 @@
 				.appendTo('#example2_wrapper .col-md-6:eq(0)');
 		});
 	</script>
-	<!-- google maps api -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4&callback=initMap" async defer></script>
-	<script src="assets/plugins/gmaps/map-custom-script.js"></script>
-
 	@endsection
