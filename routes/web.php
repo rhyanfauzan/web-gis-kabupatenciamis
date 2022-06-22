@@ -78,3 +78,18 @@ Route::get('/login', function () {
 Route::get('/lupa-password', function () {
     return view('/lupa-password');
 });
+
+Route::get('/form-elements', function () {
+    return view('pages/form-elements');
+});
+
+// create 
+Route::get('/hunian-create', function () {
+    return view('pages/hunian-create');
+});
+Route::get('/perumahan-create', function () {
+    return view('pages/perumahan-create');
+});
+Route::get('/perekaman-create', function () {
+    return view('pages/layanan/perekaman-create');
+});
