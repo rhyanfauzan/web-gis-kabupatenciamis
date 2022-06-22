@@ -90,6 +90,15 @@ Route::get('/hunian-create', function () {
 Route::get('/perumahan-create', function () {
     return view('pages/perumahan-create');
 });
+Route::get('/backlog-create', function () {
+    return view('pages/backlog-create');
+});
+Route::get('/kawasan-kumuh-create', function () {
+    return view('pages/kawasan-kumuh-create');
+});
+Route::get('/rawan-bencana-create', function () {
+    return view('pages/rawan-bencana-create');
+});
 Route::get('/perekaman-create', function () {
     return view('pages/layanan/perekaman-create');
 });

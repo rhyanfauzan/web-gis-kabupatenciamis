@@ -207,7 +207,7 @@
                                 </div>
                             </div>
                         </div>
-                    </row>
+                    </div>
                     <!--end row-->
                     <hr>
                     
