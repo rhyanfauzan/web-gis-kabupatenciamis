@@ -1,6 +1,6 @@
-@extends("layouts.app")
+@extends("layout.main")
 @section("style")
-<link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
 @endsection
 
 
@@ -284,13 +284,13 @@
 
 
 @section("script")
-<script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="assets/plugins/chartjs/js/Chart.min.js"></script>
-<script src="assets/plugins/chartjs/js/Chart.extension.js"></script>
-<script src="assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
+<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
+<script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+<script src="{{asset('assets/plugins/chartjs/js/Chart.min.js')}}"></script>
+<script src="{{asset('assets/plugins/chartjs/js/Chart.extension.js')}}"></script>
+<script src="{{asset('assets/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
 <!--Morris JavaScript -->
-<script src="assets/plugins/raphael/raphael-min.js"></script>
-<script src="assets/plugins/morris/js/morris.js"></script>
-<script src="assets/js/index2.js"></script>
+<script src="{{asset('assets/plugins/raphael/raphael-min.js')}}"></script>
+<script src="{{asset('assets/plugins/morris/js/morris.js')}}"></script>
+<script src="{{asset('assets/js/index2.js')}}"></script>
 @endsection

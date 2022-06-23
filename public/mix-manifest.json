@@ -1,0 +1,10 @@
+{
+    "/js/backend/home/index.js": "/js/backend/home/index.js",
+    "/js/backend/hunian/index.js": "/js/backend/hunian/index.js",
+    "/js/backend/hunian/detail.js": "/js/backend/hunian/detail.js",
+    "/js/backend/hunian/form.js": "/js/backend/hunian/form.js",
+    "/js/backend/prasarana-sarana-umum/index.js": "/js/backend/prasarana-sarana-umum/index.js",
+    "/js/backend/prasarana-sarana-umum/edit.js": "/js/backend/prasarana-sarana-umum/edit.js",
+    "/css/backend/home/index.css": "/css/backend/home/index.css",
+    "/css/backend/hunian/index.css": "/css/backend/hunian/index.css"
+}

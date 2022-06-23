@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layout.main")
 @section("style")
 <link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
 @endsection
