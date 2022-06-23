@@ -99,6 +99,12 @@ Route::get('/kawasan-kumuh-create', function () {
 Route::get('/rawan-bencana-create', function () {
     return view('pages/rawan-bencana-create');
 });
+Route::get('/pengelolaan-user-create', function () {
+    return view('pages/pengelolaan-user-create');
+});
 Route::get('/perekaman-create', function () {
     return view('pages/layanan/perekaman-create');
+});
+Route::get('/psu-create', function () {
+    return view('pages/layanan/psu-create');
 });
