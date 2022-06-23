@@ -1,0 +1,1 @@
+@include('backend.penerima-bantuan.sub-form.detail-foto')
