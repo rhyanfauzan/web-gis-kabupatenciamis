@@ -1,502 +1,427 @@
-@extends('layout.main')
+@extends("layout.main")
 
-@section('styles')
-<meta name="geojson-url" content="{{ route('backend.usulan.geojson') }}">
-<meta name="icons-base-url" content="{{ asset('assets/img/icon') }}">
-<style>
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    input:checked+.slider {
-        background-color: #2196F3;
-    }
-
-    input:focus+.slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked+.slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
-
-    .slider.round:before {
-        border-radius: 50%;
-    }
-</style>
-<link rel="stylesheet" href="{{ asset('assets/bundles/chocolat/dist/css/chocolat.css') }}">
-<link rel="stylesheet" href="{{ asset('css/backend/home/index.css') }}">
-<link rel="stylesheet" href="{{ asset('css/backend/hunian/index.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+@section("style")
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
-@section('breadcrumb')
-<ul class="breadcrumb breadcrumb-style ">
-    <li class="breadcrumb-item">
-        <h4 class="page-title m-b-0">Hasil Pelaksanaan</h4>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ route('backend.home.index') }}">
-            <i data-feather="archive"></i></a>
-    </li>
-    <li class="breadcrumb-item">Hasil Pelaksanaan</li>
-</ul>
-@endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-12 mb-5">
-        <div id="map" class="map-js-height"></div>
-        <div id="popup" class="ol-popup">
-            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-            <div id="popup-content"></div>
+@section("wrapper")
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Hasil pelaksanaan</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-list-ol'></i></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Daftar hasil pelaksanaan</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary px-3 align-content-center"><i class='bx bxs-plus-circle'></i>Tambah</button>
+            </div>
         </div>
-    </div>
-    <!-- <div class="col-md-4">
+        <!--end breadcrumb-->
+        <!-- table  -->
+        <!-- <h6 class="mb-0 text-uppercase">DataTable Import</h6> -->
+        <hr />
         <div class="card">
-            <div class="card-header">
-                <h4>Usulan Penerima Bantuan Rutilahu</h4>
-            </div>
             <div class="card-body">
-                <canvas id="bentukBangunanChart"></canvas>
-
-                <ul class="p-t-30 list-unstyled">
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-blue"></i></span>DPRKPLH<span class="float-right">{{$usulans[0]}}</span></li>
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-green"></i></span>Dinsos<span class="float-right">{{$usulans[1]}}</span></li>
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-orange"></i></span>Baznas<span class="float-right">{{$usulans[2]}}</span></li>
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-red"></i></span>Lainnya<span class="float-right">{{$usulans[3]}}</span></li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="col-12">
-        <div class="row">
-            <!-- <div class="col-12 mb-2">
-                @if (Auth::user()->role == 'pihak-ketiga')
-                    <a href="{{ route('backend.hunian.add') }}" class="btn btn-primary">Tambah</a>
-                @else
-                    <a href="{{ route('backend.usulan.add') }}" class="btn btn-primary">Tambah</a>
-                @endif
-                <label class="switch">
-                    <input type="checkbox" id="toggle">
-                    <span class="slider round"></span>
-                </label>
-            </div> -->
-            <div class="col-12 mb-2" id="tb-resp">
-                <div class="card">
-                    <div class="card-body">
-                        <p>Hasil Pelaksanaan</p>
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="table-data">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">
-                                            #
-                                        </th>
-                                        <th>No KK</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
-                                        <th>Sumber dana</th>
-                                        <th>Tahun</th>
-                                        <th>Nominal</th>
-                                        <th>Foto Hunian Sebelum</th>
-                                        <th>Foto Hunian Sesudah</th>
-                                        <th>Foto MCK Sebelum</th>
-                                        <th>Foto MCK Sesudah</th>
-                                        <!-- <th>Pengusul</th> -->
-                                        <!-- <th></th> -->
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 mb-2" id="tb-resp2">
-                <div class="card">
-                    <div class="card-body">
-                        <p>Daftar Hunian</p>
-
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="table-data2">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">
-                                            #
-                                        </th>
-                                        <th>Nomor KK</th>
-                                        <th>Nama Pemilik</th>
-                                        <th>Alamat</th>
-                                        <th>Luas Tanah</th>
-                                        <th>Luas Bangunan</th>
-                                        <th>Status</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($hunians as $row)
-                                    <tr>
-                                        <td class="text-center">
-                                            #
-                                        </td>
-                                        <td>{{$row->nama_pemilik}}</td>
-                                        <td>{{$row->no_kk_pemilik}}</td>
-                                        <td>{{$row->nik_pemilik}}</td>
-                                        <td>{{$row->luas_tanah}}</td>
-                                        <td>{{$row->luas_bangunan}}</td>
-                                        @if ($row->status == 1)
-                                            <td class="text-center">
-                                                <div class="bade badge-success">
-                                                    Diterima
-                                                </div>
-                                            </td>
-                                        @elseif ($row->status == 0)
-                                            <td class="text-center">
-                                                <div class="bade badge-warning">
-                                                    Pending
-                                                </div>
-                                            </td>
-                                        @else
-                                            <td class="text-center">
-                                                <div class="bade badge-danger">
-                                                    Ditolak
-                                            </td>
-                                        @endif
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <!-- judul  -->
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>No. KK</th>
+                                <th>Alamat</th>
+                                <th>Sumber dana</th>
+                                <th>Tahun</th>
+                                <th>Nominal</th>
+                                <th>Foto hunian sebelum</th>
+                                <th>Foto hunian sesudah</th>
+                                <th>Foto MCK sebelum</th>
+                                <th>Foto MCK sesudah</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <!-- body  -->
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2022
+                                </td>
+                                <td>Rp. 250,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2022
+                                </td>
+                                <td>Rp. 250,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2022
+                                </td>
+                                <td>Rp. 250,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2022
+                                </td>
+                                <td>Rp. 250,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Airi Satou</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2022
+                                </td>
+                                <td>Rp. 250,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Brielle Williamson</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    2022
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Herrod Chandler</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rhona Davidson</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Colleen Hurst</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sonya Frost</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jena Gaines</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quinn Flynn</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Charde Marshall</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Haley Kennedy</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Donna Snider</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    2021
+                                </td>
+                                <td>Rp. 250,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <a href="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg">
+                                        <img src="https://static.republika.co.id/uploads/member/images/news/hkclnw238w.jpg" alt="Rumah" style="height: 40px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nama</th>
+                                <th>No. KK</th>
+                                <th>Alamat</th>
+                                <th>Sumber dana</th>
+                                <th>Tahun</th>
+                                <th>Nominal</th>
+                                <th>Foto hunian sebelum</th>
+                                <th>Foto hunian sesudah</th>
+                                <th>Foto MCK sebelum</th>
+                                <th>Foto MCK sesudah</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+<!--end page wrapper -->
 @endsection
 
-@section('scripts')
-<script src="{{ asset('js/backend/usulan/index.js') }}"></script>
-<script src="{{ asset('assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/chartjs/chart.min.js') }}"></script>
-<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-<script src="{{ asset('assets/bundles/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+@section("script")
+<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#tb-resp2').hide();
+        $('#example').DataTable();
     });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
 
-    $('#toggle').change(function() {
-        if ($(this).prop('checked')) {
-            $('#tb-resp').hide();
-            $('#tb-resp2').show(); //checked
-        } else {
-            $('#tb-resp').show();
-            $('#tb-resp2').hide(); //not checked
-        }
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
     });
-
-    const tableData = $('#table-data').DataTable({
-        "processing": true,
-        "serverSide": true,
-        'dom': "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<'float-md-right ml-2'B>f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        "ajax": {
-            "url": "{{ route('backend.usulan.getData') }}",
-        },
-        'buttons': ['csv', {
-            'text': '<i class="fa fa-id-badge fa-fw" aria-hidden="true"></i>',
-            'action': function(e, dt, node) {
-
-                $(dt.table().node()).toggleClass('cards');
-                $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
-
-                dt.draw('page');
-            },
-            'className': 'btn-sm',
-            'attr': {
-                'title': 'Change views',
-            }
-        }],
-        "columns": [{
-                "data": "id",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return meta.row + 1;
-                }
-            },
-            {
-                "data": "hunian.no_kk_pemilik",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return `${data}`;
-                    // const image = `{{ asset('') }}${data}`
-                    // return `<div class="gallery gallery-fw"><div class="gallery-item" data-image="${image}" data-title="${full.nama_pemilik}"></div></div>`;
-                }
-            },
-            {
-                "data": "hunian.nama_pemilik",
-                'class': 'text-right'
-            },
-            {
-                "data": "hunian.alamat_detail",
-                'class': 'text-right'
-            },
-            {
-                "data": "dinas.nama",
-                'class': 'text-right'
-            },
-            {
-                "data": "rencana_tahun_penanganan",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    if (data == undefined || data == "") return "-";
-                    return `${data}`;
-                }
-            },
-            {
-                "data": "nominal",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return `${data}`;
-                }
-            },
-            {
-                "data": "hunian.foto_hunian",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    const image = `{{ asset('') }}${data}`
-                    return `<div class="gallery gallery-fw"><div class="gallery-item" data-image="${image}" data-title="${'Sebelum perbaikan'}"></div></div>`;
-                }
-            },
-            {
-                "data": "foto_rumah",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    if (data == undefined || data == "") return "Belum ada foto";
-                    const image = `{{ asset('') }}${data}`
-                    return `<div class="gallery gallery-fw"><div class="gallery-item" data-image="${image}" data-title="${'Setelah perbaikan'}"></div></div>`;
-                }
-            },
-            {
-                "data": "hunian.kondisi_mck",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    const image = `{{ asset('') }}${data}`
-                    return `<div class="gallery gallery-fw"><div class="gallery-item" data-image="${image}" data-title="${'Sebelum perbaikan'}"></div></div>`;
-                }
-            },
-            {
-                "data": "foto_mck",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    if (data == undefined || data == "") return "Belum ada foto";
-                    const image = `{{ asset('') }}${data}`
-                    return `<div class="gallery gallery-fw"><div class="gallery-item" data-image="${image}" data-title="${'Setelah perbaikan'}"></div></div>`;
-                }
-            },
-            // {
-            //     "data": "status",
-            //     'class': 'text-right',
-            //     "render": function(data, type, full, meta) {
-            //         switch (data) {
-            //             case 0:
-            //                 return '<div class="badge badge-warning">Pending</div>'
-            //                 break;
-            //             case 1:
-            //                 return '<div class="badge badge-success">Diterima</div>'
-            //                 break;
-            //             case 2:
-            //                 return '<div class="badge badge-danger">Ditolak</div>'
-            //             default:
-            //                 return "Invalid"
-            //                 break;
-            //         }
-            //     }
-            // },
-            // {
-            //     "data": "pesan",
-            //     'class': 'text-right',
-            //     "render": function(data, type, full, meta) {
-            //         if (data == undefined || data == "")
-            //             return "-"
-            //         return `${data}`;
-            //     }
-            // },
-            // {
-            //     "data": "pengusul.name",
-            //     'class': 'text-right',
-            //     "render": function(data, type, full, meta) {
-            //         if (data == undefined || data == "")
-            //             return "-"
-            //         return `${data}`;
-            //     }
-            // },
-            // {
-            //     "data": "id",
-            //     "render": function(data, type, full, meta) {
-            //         const actions = []
-            //         actions.push(
-            //             `<button onclick="del(${data})" class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Delete"><i class="far fa-trash-alt"></i></button>`
-            //         )
-            //         return actions.join('&nbsp;')
-            //     }
-            // }
-        ],
-        'drawCallback': function(settings) {
-            const api = this.api();
-            const $table = $(api.table().node());
-
-            if ($table.hasClass('cards')) {
-
-                // Create an array of labels containing all table headers
-                var labels = [];
-                $('thead th', $table).each(function() {
-                    labels.push($(this).text());
-                });
-
-                // Add data-label attribute to each cell
-                $('tbody tr', $table).each(function() {
-                    $(this).find('td').each(function(column) {
-                        $(this).attr('data-label', labels[column]);
-                    });
-                });
-
-                var max = 0;
-                $('tbody tr', $table).each(function() {
-                    max = Math.max($(this).height(), max);
-                }).height(max);
-
-            } else {
-                // Remove data-label attribute from each cell
-                $('tbody td', $table).each(function() {
-                    $(this).removeAttr('data-label');
-                });
-
-                $('tbody tr', $table).each(function() {
-                    $(this).height('auto');
-                });
-            }
-
-            $(".gallery .gallery-item").each(function() {
-                const me = $(this);
-
-                me.attr("href", me.data("image"));
-                me.attr("title", me.data("title"));
-                if (me.parent().hasClass("gallery-fw")) {
-                    me.css({
-                        height: me.parent().data("item-height"),
-                    });
-                    me.find("div").css({
-                        lineHeight: me.parent().data("item-height") + "px",
-                    });
-                }
-                me.css({
-                    backgroundImage: 'url("' + me.data("image") + '")'
-                });
-            });
-            $(".gallery").Chocolat({
-                className: "gallery",
-                imageSelector: ".gallery-item",
-            });
-        }
-    })
-
-    function del(id) {
-        swal({
-            title: "Konfirmasi",
-            text: "Apakah anda yakin ingin menghapus data?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete)  => {
-            if (willDelete) {
-                $.ajax({
-                        method: "POST",
-                        url: "{{ route('backend.usulan.delete',['id' => ':id']) }}".replace(':id', id),
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        }
-                    })
-                    .done(function(msg) {
-                        swal("Data berhasil dihapus", {
-                            icon: "success",
-                        })
-                        tableData.ajax.reload()
-                    })
-            }
-        })
-    }
-
-    // const ctxBentukBangunanChart = document.getElementById("bentukBangunanChart").getContext("2d");
-    // const bentukBangunanChart = new Chart(ctxBentukBangunanChart, {
-    //     type: "bar",
-    //     data: {
-    //         datasets: [{
-    //             data: {
-    //                 {
-    //                     json_encode($usulans)
-    //                 }
-    //             },
-    //             backgroundColor: ["#2196f3", "#63ed7a", "#ffa426", "#f44336", "#ffe821"],
-    //             label: "Usulan Penerima Bantuan",
-    //         }, ],
-    //         labels: ["DPRKPLH", "Dinsos", "Baznas", "Lainnya"],
-    //     },
-    //     options: {
-    //         responsive: true,
-    //         legend: {
-    //             position: "top",
-    //             display: false,
-    //         },
-    //     },
-    // });
 </script>
 @endsection

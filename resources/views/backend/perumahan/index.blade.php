@@ -1,240 +1,301 @@
-@extends('layout.main')
+@extends("layout.main")
 
-@section('styles')
-<meta name="geojson-url" content="{{ route('backend.perumahan.geojson') }}">
-<meta name="icons-base-url" content="{{ asset('assets/img/icon') }}">
-
-<link rel="stylesheet" href="{{ asset('assets/bundles/chocolat/dist/css/chocolat.css') }}">
-<link rel="stylesheet" href="{{ asset('css/backend/home/index.css') }}">
-<link rel="stylesheet" href="{{ asset('css/backend/hunian/index.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+@section("style")
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
-@section('breadcrumb')
-<ul class="breadcrumb breadcrumb-style ">
-    <li class="breadcrumb-item">
-        <h4 class="page-title m-b-0">Perumahan</h4>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ route('backend.home.index') }}">
-            <i data-feather="home"></i></a>
-    </li>
-    <li class="breadcrumb-item">Perumahan</li>
-</ul>
-@endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-12">
+@section("wrapper")
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Perumahan</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-building-house"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Daftar Perumahan</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary px-3 align-content-center"><i class='bx bxs-plus-circle'></i>Tambah</button>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <!-- table  -->
+        <!-- <h6 class="mb-0 text-uppercase">DataTable Import</h6> -->
+        <hr />
         <div class="card">
             <div class="card-body">
-                <div id="map" class="map-js-height"></div>
-                <div id="popup" class="ol-popup">
-                    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                    <div id="popup-content"></div>
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <!-- judul  -->
+                        <thead>
+                            <tr>
+                                <th>Nama perumahan</th>
+                                <th>No IMB</th>
+                                <th>Tanggal IMB</th>
+                                <th>Pengembang</th>
+                                <th>Perusahaan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <!-- body  -->
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    PT. Sampoerna
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    PT. Sampoerna
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    PT. Sampoerna
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    PT. Sampoerna
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Airi Satou</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    PT. Sampoerna
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Brielle Williamson</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    PT. Sampoerna
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Herrod Chandler</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rhona Davidson</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Colleen Hurst</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sonya Frost</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jena Gaines</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Waskita</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quinn Flynn</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Charde Marshall</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Haley Kennedy</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Donna Snider</td>
+                                <td>1101</td>
+                                <td>14-05-2020</td>
+                                <td>Adhi Karya</td>
+                                <td>
+                                    Wijayakarta
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nama perumahan</th>
+                                <th>No IMB</th>
+                                <th>Tanggal IMB</th>
+                                <th>Pengembang</th>
+                                <th>Perusahaan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Table -->
-    <div class="col-12">
+        <hr>
+        <!-- map & chart -->
         <div class="row">
-            <div class="col-12 mb-2">
-                <a href="{{ route('backend.perumahan.add') }}" class="btn btn-primary">Tambah</a>
-            </div>
-            
-            <div class="col-12 mb-2">
+            <!-- map  -->
+            <div class="col-lg-9 mx-auto">
+                <!-- <h6 class="text-uppercase">Area rawan bencana</h6> -->
+                <!-- <hr /> -->
                 <div class="card">
                     <div class="card-body">
-                        <p>Daftar Perumahan</p>
-
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="table-data">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">
-                                            #
-                                        </th>
-                                        <th>Nama Perumahan</th>
-                                        <th>No IMB</th>
-                                        <th>Tanggal IMB</th>
-                                        <th>Pengembang</th>
-                                        <th>Perusahaan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                        <div id="simple-map-desa" class="gmaps"></div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+</div>
+<!--end page wrapper -->
 @endsection
 
-@section('scripts')
-
-<script src="{{ asset('js/backend/perumahan/index.js') }}"></script>
-<script src="{{ asset('assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/chartjs/chart.min.js') }}"></script>
+@section("script")
+<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    const editUrl = '{{ route('backend.perumahan.edit', ['id' => ':id']) }}'
-    const deleteUrl = '{{ route('backend.pengelolaanUser.delete', ['id' => ':id']) }}'
-
-    const tableData = $('#table-data').DataTable({
-        "processing": true,
-        "serverSide": true,
-        'dom': "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<'float-md-right ml-2'B>f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        "ajax": {
-            "url": '{{ route('backend.perumahan.getData') }}',
-        },
-        'buttons': ['csv', {
-            'text': '<i class="fa fa-id-badge fa-fw" aria-hidden="true"></i>',
-            'action': function(e, dt, node) {
-
-                $(dt.table().node()).toggleClass('cards');
-                $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
-
-                dt.draw('page');
-            },
-            'className': 'btn-sm',
-            'attr': {
-                'title': 'Change views',
-            }
-        }],
-        "columns": [{
-                "data": "id",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return meta.row + 1;
-                }
-            },
-            {
-                "data": "nama_perum",
-                'class': 'text-right'
-            },
-            {
-                "data": "no_imb",
-                'class': 'text-right'
-            },
-            {
-                "data": "tgl_imb",
-                'class': 'text-right'
-            },
-            {
-                "data": "pengembang",
-                'class': 'text-right'
-            },
-            {
-                "data": "perusahaan",
-                'class': 'text-right'
-            },
-            {
-                "data": "id",
-                "render": function(data, type, full, meta) {
-                    const actions = []
-                    actions.push(
-                        `<a href='${editUrl.replace(':id', data)}' class="btn btn-icon btn-success btn-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Edit"><i class="far fa-edit"></i></a>`
-                    )
-                    actions.push(
-                        `<button onclick="del(${data})" class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Delete"><i class="far fa-trash-alt"></i></button>`
-                    )
-                    return actions.join('&nbsp;')
-                }
-            }
-        ],
-        'drawCallback': function(settings) {
-            const api = this.api();
-            const $table = $(api.table().node());
-
-            if ($table.hasClass('cards')) {
-
-                // Create an array of labels containing all table headers
-                var labels = [];
-                $('thead th', $table).each(function() {
-                    labels.push($(this).text());
-                });
-
-                // Add data-label attribute to each cell
-                $('tbody tr', $table).each(function() {
-                    $(this).find('td').each(function(column) {
-                        $(this).attr('data-label', labels[column]);
-                    });
-                });
-
-                var max = 0;
-                $('tbody tr', $table).each(function() {
-                    max = Math.max($(this).height(), max);
-                }).height(max);
-
-            } else {
-                // Remove data-label attribute from each cell
-                $('tbody td', $table).each(function() {
-                    $(this).removeAttr('data-label');
-                });
-
-                $('tbody tr', $table).each(function() {
-                    $(this).height('auto');
-                });
-            }
-
-            $(".gallery .gallery-item").each(function() {
-                const me = $(this);
-
-                me.attr("href", me.data("image"));
-                me.attr("title", me.data("title"));
-                if (me.parent().hasClass("gallery-fw")) {
-                    me.css({
-                        height: me.parent().data("item-height"),
-                    });
-                    me.find("div").css({
-                        lineHeight: me.parent().data("item-height") + "px",
-                    });
-                }
-                me.css({
-                    backgroundImage: 'url("' + me.data("image") + '")'
-                });
-            });
-            $(".gallery").Chocolat({
-                className: "gallery",
-                imageSelector: ".gallery-item",
-            });
-        }
-    })
-
-    function del(id) {
-        swal({
-            title: "Konfirmasi",
-            text: "Apakah anda yakin ingin menghapus data?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                        method: "POST",
-                        url: "{{ route('backend.perumahan.delete', ['id' => ':id']) }}".replace(':id', id),
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        }
-                    })
-                    .done(function(msg) {
-                        swal("Data berhasil dihapus", {
-                            icon: "success",
-                        })
-                        tableData.ajax.reload()
-                    })
-            }
-        })
-    }
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
 </script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+<!-- google maps api -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4&callback=initMap" async defer></script>
+<script src="assets/plugins/gmaps/map-custom-script.js"></script>
+
 @endsection

@@ -1,98 +1,42 @@
-@extends('layout.main')
+@extends("layout.main")
 
-@section('styles')
-    <meta name="desa-geo-json-url" content="{{ route('backend.desa.geojson') }}">
-    <link rel="stylesheet" href="{{ asset('css/backend/home/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/chocolat/dist/css/chocolat.css') }}">
-    <style>
-        .tablehead {
-            text-decoration: none;
-            color: #000;
-            font-size: 16px;
-        }
 
-        .tablebody {
-            text-decoration: none;
-            color: #888888;
-        }
-
-    </style>
-@endsection
-
-@section('breadcrumb')
-    <ul class="breadcrumb breadcrumb-style ">
-        <li class="breadcrumb-item">
-            <h4 class="page-title m-b-0">Desa</h4>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{{ route('backend.home.index') }}">
-                <i data-feather="map"></i></a>
-        </li>
-        <li class="breadcrumb-item">Kawasan Kumuh</li>
-    </ul>
-@endsection
-
-@section('content')
-    <div class="row">
-        <div class="col-md-8 mb-5">
-            <div id="map" class="map-js-height"></div>
-            <div id="popup" class="ol-popup">
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                <div id="popup-content"></div>
+@section("wrapper")
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Map</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-map-alt'></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Desa</li>
+                    </ol>
+                </nav>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-12 mb-3">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon" style="background-color: #32CD32;">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="padding-20">
-                                <div class="text-right">
-                                    <h3 class="font-light mb-0">
-                                        <i class="ti-arrow-up text-success"></i> {{ $total_desa }}
-                                    </h3>
-                                    <span class="text-muted">Total Desa</span>
-                                </div>
-                            </div>
-                        </div>
+        <!--end breadcrumb-->
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h6 class="text-uppercase">Desa</h6>
+                <hr />
+                <div class="card">
+                    <div class="card-body">
+                        <div id="simple-map-desa" class="gmaps"></div>
                     </div>
                 </div>
-
-                <div class="col-12 mb-3">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon l-bg-green">
-                            <i class="fas fa-map"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="padding-20">
-                                <div class="text-right">
-                                    <h3 class="font-light mb-0">
-                                        <i class="ti-arrow-up text-success"></i> {{ $total_luas_area }} (m<sup>2</sup>)
-                                    </h3>
-                                    <span class="text-muted">Total Luas Wilayah Kumuh</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
+        <!--end row-->
     </div>
-
+</div>
 @endsection
 
-@section('scripts')
-    <script src="{{ asset('js/backend/desa/index.js') }}"></script>
-    <script src="{{ asset('assets/bundles/chartjs/chart.min.js') }}"></script>
-    <script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-    <script src="{{ asset('assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+
+@section("script")
+<!-- google maps api -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4&callback=initMap" async defer></script>
+<script src="assets/plugins/gmaps/map-custom-script.js"></script>
 @endsection

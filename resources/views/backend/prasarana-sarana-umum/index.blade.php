@@ -1,255 +1,268 @@
-@extends('layout.main')
+@extends("layout.main")
 
-@section('styles')
-    <meta name="geojson-url" content="{{ route('backend.prasaranaSaranaUmum.geojson') }}">
-    <meta name="icons-base-url" content="{{ asset('assets/img/icon') }}">
-    <style>
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
-    </style>
-    <link rel="stylesheet" href="{{ asset('assets/bundles/chocolat/dist/css/chocolat.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/backend/home/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/backend/hunian/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+@section("style")
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
-@section('breadcrumb')
-    <ul class="breadcrumb breadcrumb-style ">
-        <li class="breadcrumb-item">
-            <h4 class="page-title m-b-0">Prasarana Sarana Utilitas Umum</h4>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{{ route('backend.home.index') }}">
-                <i data-feather="archive"></i></a>
-        </li>
-        <li class="breadcrumb-item">Prasarana Sarana Utilitas Umum</li>
-    </ul>
-@endsection
-
-@section('content')
-    <div class="row">
-        <div class="col-md-12 mb-5">
-            <div id="map" class="map-js-height"></div>
-            <div id="popup" class="ol-popup">
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                <div id="popup-content"></div>
+@section("wrapper")
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Prasarana sarana utilitas umum
+            </div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-receipt'></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Daftar PSU
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary px-3 align-content-center"><i class='bx bxs-plus-circle'></i>Tambah</button>
             </div>
         </div>
-
-        <div class="col-12 mb-2">
-            <div class="col-12 text-right mb-2">
-                <a href="{{ route('backend.prasaranaSaranaUmum.add') }}" class="btn btn-primary">Tambah</a>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <p>Daftar PSU</p>
-
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table-data">
-                            <thead>
+        <!--end breadcrumb-->
+        <!-- table  -->
+        <!-- <h6 class="mb-0 text-uppercase">DataTable Import</h6> -->
+        <hr />
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <!-- judul  -->
+                        <thead>
                             <tr>
-                                <th class="text-center">
-                                    #
-                                </th>
                                 <th>Nama</th>
                                 <th>Keterangan</th>
                                 <th>Desa</th>
                                 <th>Kecamatan</th>
-                                <th></th>
+                                <th>Aksi</th>
                             </tr>
-                            </thead>
-                        </table>
-                    </div>
+                        </thead>
+                        <!-- body  -->
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>Umum</td>
+                                <td>Cigayam </td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>Umum</td>
+                                <td>Cigayam </td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td>Umum</td>
+                                <td>Cigayam </td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td>Umum</td>
+                                <td>Cigayam </td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Airi Satou</td>
+                                <td>Umum</td>
+                                <td>Cigayam </td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Brielle Williamson</td>
+                                <td>Umum</td>
+                                <td>Cigayam </td>
+                                <td>Buni Seuri</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Herrod Chandler</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Buni Seuri</td>
+                                <td>
+
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Rhona Davidson</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Buni Seuri</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Colleen Hurst</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Buni Seuri</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Sonya Frost</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Buni Seuri</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Jena Gaines</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Buni Seuri</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Quinn Flynn</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Charde Marshall</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Haley Kennedy</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Donna Snider</td>
+                                <td>Umum</td>
+                                <td>Girimukti</td>
+                                <td>Cikijing</td>
+                                <td>
+                                    <a type="button" class="btn text-info p-0"><i class='bx bx-map-pin'></i></a>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Keterangan</th>
+                                <th>Desa</th>
+                                <th>Kecamatan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+<!--end page wrapper -->
 @endsection
 
-@section('scripts')
-    <script src="{{ asset('js/backend/prasarana-sarana-umum/index.js') }}"></script>
-    <script src="{{ asset('assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/chartjs/chart.min.js') }}"></script>
-    <script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-    <script src="{{ asset('assets/bundles/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
+@section("script")
+<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
 
-        const detailUrl = '{{ route('backend.prasaranaSaranaUmum.detail', ['id' => ':id']) }}'
-        const editUrl = '{{ route('backend.prasaranaSaranaUmum.edit', ['id' => ':id']) }}'
-        const deleteUrl = '{{ route('backend.prasaranaSaranaUmum.delete', ['id' => ':id']) }}'
-
-        const tableData = $('#table-data').DataTable({
-            "processing": true,
-            "serverSide": true,
-            'dom':
-                "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<'float-md-right ml-2'B>f>>" +
-                "<'row'<'col-sm-12'tr>>" +
-                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            "ajax": {
-                "url": '{{ route('backend.prasaranaSaranaUmum.getData') }}',
-            },
-            'buttons': [ 'csv', {
-                'text': '<i class="fa fa-id-badge fa-fw" aria-hidden="true"></i>',
-                'action': function (e, dt, node) {
-
-                    $(dt.table().node()).toggleClass('cards');
-                    $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
-
-                    dt.draw('page');
-                },
-                'className': 'btn-sm',
-                'attr': {
-                    'title': 'Change views',
-                }
-            }],
-            "columns": [
-                {
-                    "data": "id",
-                    'class': 'text-right',
-                    "render": function (data, type, full, meta) {
-                        return meta.row + 1;
-                    }
-                },
-                {"data": "nama"},
-                {"data": "keterangan"},
-                {"data": "desa.nama"},
-                {"data": "kecamatan.nama"},
-                {
-                    "data": "id",
-                    "render": function (data, type, full, meta) {
-                        const actions = []
-                        actions.push(`<a href='${detailUrl.replace(':id', data)}' class="btn btn-icon btn-primary btn-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Detail"><i class="far fa-eye"></i></a>`)
-                        actions.push(`<a href='${editUrl.replace(':id', data)}' class="btn btn-icon btn-success btn-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Edit"><i class="far fa-edit"></i></a>`)
-                        actions.push(`<button onclick="del(${data})" class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Delete"><i class="far fa-trash-alt"></i></button>`)
-                        return actions.join('&nbsp;')
-                    }
-                }
-            ],
-            'drawCallback': function (settings) {
-                const api = this.api();
-                const $table = $(api.table().node());
-
-                if ($table.hasClass('cards')) {
-
-                    // Create an array of labels containing all table headers
-                    var labels = [];
-                    $('thead th', $table).each(function () {
-                        labels.push($(this).text());
-                    });
-
-                    // Add data-label attribute to each cell
-                    $('tbody tr', $table).each(function () {
-                        $(this).find('td').each(function (column) {
-                            $(this).attr('data-label', labels[column]);
-                        });
-                    });
-
-                    var max = 0;
-                    $('tbody tr', $table).each(function () {
-                        max = Math.max($(this).height(), max);
-                    }).height(max);
-
-                } else {
-                    // Remove data-label attribute from each cell
-                    $('tbody td', $table).each(function () {
-                        $(this).removeAttr('data-label');
-                    });
-
-                    $('tbody tr', $table).each(function () {
-                        $(this).height('auto');
-                    });
-                }
-            }
-        })
-
-        function del(id)
-        {
-            swal({
-                title: "Konfirmasi",
-                text: "Apakah anda yakin ingin menghapus data?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('backend.prasaranaSaranaUmum.delete', ['id' => ':id']) }}".replace(':id', id),
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        }
-                    })
-                        .done(function (msg) {
-                            swal("Data berhasil dihapus", {
-                                icon: "success",
-                            })
-                            tableData.ajax.reload()
-                        })
-                }
-            })
-        }
-
-
-    </script>
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
 @endsection

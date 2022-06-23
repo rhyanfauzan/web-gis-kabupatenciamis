@@ -1,136 +1,236 @@
-@extends('layout.main')
+@extends("layout.main")
 
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+@section("style")
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 @endsection
 
-@section('breadcrumb')
-    <ul class="breadcrumb breadcrumb-style ">
-        <li class="breadcrumb-item">
-            <h4 class="page-title m-b-0">Pengelolaan User</h4>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="{{ route('backend.home.index') }}">
-                <i data-feather="home"></i></a>
-        </li>
-        <li class="breadcrumb-item">Pengelolaan User</li>
-    </ul>
-@endsection
+@section("wrapper")
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Pengelolaan user
+            </div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-user-check'></i></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Pengelolaan user
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary px-3 align-content-center"><i class='bx bxs-plus-circle'></i>Tambah</button>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <!-- table  -->
+        <!-- <h6 class="mb-0 text-uppercase">DataTable Import</h6> -->
+        <hr />
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <!-- judul  -->
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <!-- body  -->
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>user@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
 
-@section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Pengelolaan User</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12 mb-3">
-                            <a href="{{ route('backend.pengelolaanUser.add') }}" class="btn btn-success float-right">Tambah</a>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table class="table table-striped" id="table-data">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-center">
-                                            #
-                                        </th>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>user@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
 
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td>user@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td>user@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Airi Satou</td>
+                                <td>user@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Brielle Williamson</td>
+                                <td>user@gmail.com</td>
+                                <td>User</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Herrod Chandler</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Rhona Davidson</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Colleen Hurst</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Sonya Frost</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Jena Gaines</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Quinn Flynn</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Charde Marshall</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Haley Kennedy</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>Donna Snider</td>
+                                <td>admin@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!--end page wrapper -->
 @endsection
 
-@section('scripts')
-    <script src="{{ asset('assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-        const editUrl = '{{ route('backend.pengelolaanUser.edit', ['id' => ':id']) }}'
-        const deleteUrl = '{{ route('backend.pengelolaanUser.delete', ['id' => ':id']) }}'
+@section("script")
+<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
 
-        const tableData = $('#table-data').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                "url": '{{ route('backend.pengelolaanUser.getData') }}',
-            },
-            "columns": [
-                {
-                    "data": "id",
-                    "render": function (data, type, full, meta) {
-                        return meta.row + 1;
-                    }
-                },
-                {"data": "name"},
-                {"data": "email"},
-                {
-                    "data": "role",
-                    "render": function (data, type, full, meta) {
-                        if (data === 'admin')
-                        {
-                            return 'Administrator'
-                        } else if (data === 'dinas')
-                        {
-                            return 'Dinas (SPRKPLH)'
-                        } else if (data === 'pihak-ketiga')
-                        {
-                            return 'Pihak Ke-3'
-                        }
-                        return '-';
-                    }
-                },
-                {
-                    "data": "id",
-                    "render": function (data, type, full, meta) {
-                        const actions = []
-                        actions.push(`<a href='${editUrl.replace(':id', data)}' class="btn btn-icon btn-success btn-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Edit"><i class="far fa-edit"></i></a>`)
-                        actions.push(`<button onclick="del(${data})" class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Delete"><i class="far fa-trash-alt"></i></button>`)
-                        return actions.join('&nbsp;')
-                    }
-                }
-            ]
-        })
-
-        function del(id)
-        {
-            swal({
-                title: "Konfirmasi",
-                text: "Apakah anda yakin ingin menghapus data?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        method: "POST",
-                        url: "{{ route('backend.pengelolaanUser.delete', ['id' => ':id']) }}".replace(':id', id),
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    })
-                        .done(function (msg) {
-                            swal("Data berhasil dihapus", {
-                                icon: "success",
-                            })
-                            tableData.ajax.reload()
-                        })
-                }
-            })
-        }
-    </script>
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
 @endsection

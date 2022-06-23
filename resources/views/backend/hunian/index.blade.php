@@ -1,362 +1,373 @@
-@extends('layout.main')
+@extends("layout.main")
 
-@section('styles')
-<meta name="geojson-url" content="{{ route('backend.hunian.geojson') }}">
-<meta name="icons-base-url" content="{{ asset('assets/img/icon') }}">
-
-<link rel="stylesheet" href="{{ asset('assets/bundles/chocolat/dist/css/chocolat.css') }}">
-<link rel="stylesheet" href="{{ asset('css/backend/home/index.css') }}">
-<link rel="stylesheet" href="{{ asset('css/backend/hunian/index.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/bundles/datatables/datatables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+@section("style")
+<link href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<!-- <link href="assets/plugins/highcharts/css/highcharts.css" rel="stylesheet" /> -->
 @endsection
 
-@section('breadcrumb')
-<ul class="breadcrumb breadcrumb-style ">
-    <li class="breadcrumb-item">
-        <h4 class="page-title m-b-0">Hunian</h4>
-    </li>
-    <li class="breadcrumb-item">
-        <a href="{{ route('backend.home.index') }}">
-            <i data-feather="home"></i></a>
-    </li>
-    <li class="breadcrumb-item">Hunian</li>
-</ul>
-@endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-8">
+@section("wrapper")
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Hunian</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-buildings"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Daftar Hunian</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <button type="button" class="btn btn-primary px-3 align-content-center"><i class='bx bxs-plus-circle'></i>Tambah</button>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <!-- table  -->
+        <!-- <h6 class="mb-0 text-uppercase">DataTable Import</h6> -->
+        <hr />
         <div class="card">
             <div class="card-body">
-                <div id="map" class="map-js-height"></div>
-                <div id="popup" class="ol-popup">
-                    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                    <div id="popup-content"></div>
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <!-- judul  -->
+                        <thead>
+                            <tr>
+                                <th>Nama pemilik</th>
+                                <th>Desa</th>
+                                <th>Luas Tanah</th>
+                                <th>Luas bangunan</th>
+                                <th>Foto hunian</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <!-- body  -->
+                        <tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>61 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Garrett Winters</td>
+                                <td>Accountant</td>
+                                <td>63 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ashton Cox</td>
+                                <td>Junior Technical Author</td>
+                                <td>66 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cedric Kelly</td>
+                                <td>Senior Javascript Developer</td>
+                                <td>22 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Airi Satou</td>
+                                <td>Accountant</td>
+                                <td>33 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Brielle Williamson</td>
+                                <td>Integration Specialist</td>
+                                <td>61 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Herrod Chandler</td>
+                                <td>Sales Assistant</td>
+                                <td>59 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rhona Davidson</td>
+                                <td>Integration Specialist</td>
+                                <td>55 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Colleen Hurst</td>
+                                <td>Javascript Developer</td>
+                                <td>39 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sonya Frost</td>
+                                <td>Software Engineer</td>
+                                <td>23 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jena Gaines</td>
+                                <td>Office Manager</td>
+                                <td>30 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Quinn Flynn</td>
+                                <td>Support Lead</td>
+                                <td>22 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Charde Marshall</td>
+                                <td>Regional Director</td>
+                                <td>36 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Haley Kennedy</td>
+                                <td>Senior Marketing Designer</td>
+                                <td>43 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Donna Snider</td>
+                                <td>Customer Support</td>
+                                <td>27 m<sup>2</sup></td>
+                                <td>45 m<sup>2</sup></td>
+                                <td>
+                                    <a href="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg">
+                                        <img src="https://www.harapanrakyat.com/wp-content/uploads/2020/11/Rumah-Hunian-Minimalis-dengan-Tips-tips-dalam-Merancang-Desain.jpg" alt="Hunian" style="height: 30px">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a type="button" class="btn text-warning p-0"><i class='bx bx-edit'></i></a>
+                                    <a type="button" class="btn text-danger p-0"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nama pemilik</th>
+                                <th>Desa</th>
+                                <th>Luas tanah</th>
+                                <th>Luas bangunan</th>
+                                <th>Foto hunian</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-md-4">
+        <hr>
+        <!-- map & chart -->
         <div class="row">
-            <div class="col-12 mb-3">
-                <div class="card card-statistic-1">
-                    <div class="card-icon l-bg-green">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="padding-20">
-                            <div class="text-right">
-                                <h3 class="font-light mb-0">
-                                    <i class="ti-arrow-up text-success"></i> {{ $jumlahRumahLayakHuni }}
-                                </h3>
-                                <span class="text-muted">Rumah Layak Huni</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 mb-3">
-                <div class="card card-statistic-1">
-                    <div class="card-icon l-bg-red">
-                        <i class="fas fa-house-damage"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="padding-20">
-                            <div class="text-right">
-                                <h3 class="font-light mb-0">
-                                    <i class="ti-arrow-up text-danger"></i> {{ $jumlahRumahTidakLayakHuni }}
-                                </h3>
-                                <span class="text-muted">Tidak Layak Huni</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h4>Status Kepemilikan Hunian</h4>
-            </div>
-            <div class="card-body">
-                <canvas id="donutChart"></canvas>
-
-                <ul class="p-t-30 list-unstyled">
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-blue"></i></span>SHM<span class="float-right">{{ $statusKepemilikans[0] }}</span></li>
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-green"></i></span>Hak
-                        Guna<span class="float-right">{{ $statusKepemilikans[1] }}</span></li>
-                    <li class="padding-5"><span><i class="fa fa-circle m-r-5 col-orange"></i></span>Akta Jual
-                        Beli<span class="float-right">{{ $statusKepemilikans[2] }}</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Table -->
-    <div class="col-12">
-        <div class="row">
-            <div class="col-12 mb-2">
-                <a href="{{ route('backend.hunian.add') }}" class="btn btn-primary">Tambah</a>
-                <button type="button" class="btn btn-primary mr-5" data-toggle="modal" data-target="#importExcel">
-                    IMPORT EXCEL
-                </button>
-            </div>
-            
-
-            <!-- EXPORT -->
-            <a href="{{ route('backend.hunian.export_excel') }}" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
-            <div class="col-12 mb-2">
+            <!-- map  -->
+            <div class="col-lg-9 mx-auto">
+                <!-- <h6 class="text-uppercase">Area rawan bencana</h6> -->
+                <!-- <hr /> -->
                 <div class="card">
                     <div class="card-body">
-                        <p>Daftar Hunian</p>
+                        <div id="simple-map-desa" class="gmaps"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- card  -->
+            <div class="col-lg-3 mx-auto">
+                <div class="card radius-10 overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-primary font-14">Rumah layak huni</p>
+                                <h5 class="my-0 text-primary">32</h5>
+                            </div>
+                            <div class="text-primary ms-auto font-30"><i class='bx bx-home-smile'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="table-responsive">
-                            <table class="table table-striped" id="table-data">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">
-                                            #
-                                        </th>
-                                        <th>Foto Hunian</th>
-                                        <th>Nama Pemilik</th>
-                                        <th>Desa</th>
-                                        <th>Luas Tanah</th>
-                                        <th>Luas Bangunan</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                            </table>
+                <!-- row 3  -->
+                <div class="card radius-10 overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-secondary font-14">Tidak layak huni</p>
+                                <h5 class="my-0 text-secondary">15</h5>
+                            </div>
+                            <div class="text-secondary ms-auto font-30"><i class='bx bx-home-circle'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- chart  -->
+                <!-- <h6 class="mb-0 text-uppercase">Doughnut Chart</h6> -->
+                <!-- <hr /> -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart-hunian"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+<!--end page wrapper -->
 @endsection
 
-@section('scripts')
-
-<div class="modal" id="importExcel" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <form method="post" action="{{ route('backend.hunian.import_excel') }}" enctype="multipart/form-data">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
-                            </div>
-                            <div class="modal-body">
-
-                                {{ csrf_field() }}
-
-                                <label>Pilih file excel</label>
-                                <div class="form-group">
-                                    <input type="file" name="file" required="required">
-                                </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Import</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-<script src="{{ asset('js/backend/hunian/index.js') }}"></script>
-<script src="{{ asset('assets/bundles/sweetalert/sweetalert.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/bundles/chartjs/chart.min.js') }}"></script>
+@section("script")
+<script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    const editUrl = '{{ route('backend.hunian.edit', ['id' => ':id']) }}'
-    const deleteUrl = '{{ route('backend.pengelolaanUser.delete', ['id' => ':id']) }}'
-
-    const tableData = $('#table-data').DataTable({
-        "processing": true,
-        "serverSide": true,
-        'dom': "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'<'float-md-right ml-2'B>f>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-        "ajax": {
-            "url": '{{ route('backend.hunian.getData') }}',
-        },
-        'buttons': ['csv', {
-            'text': '<i class="fa fa-id-badge fa-fw" aria-hidden="true"></i>',
-            'action': function(e, dt, node) {
-
-                $(dt.table().node()).toggleClass('cards');
-                $('.fa', node).toggleClass(['fa-table', 'fa-id-badge']);
-
-                dt.draw('page');
-            },
-            'className': 'btn-sm',
-            'attr': {
-                'title': 'Change views',
-            }
-        }],
-        "columns": [{
-                "data": "id",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return meta.row + 1;
-                }
-            },
-            {
-                "data": "foto_hunian",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    const image = `{{ asset('') }}${data}`
-                    return `<div class="gallery gallery-fw"><div class="gallery-item" data-image="${image}" data-title="${full.nama_pemilik}"></div></div>`;
-                }
-            },
-            {
-                "data": "nama_pemilik",
-                'class': 'text-right'
-            },
-            {
-                "data": "desa.nama",
-                'class': 'text-right'
-            },
-            {
-                "data": "luas_tanah",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return `${data} m<sup>2</sup>`;
-                }
-            },
-            {
-                "data": "luas_bangunan",
-                'class': 'text-right',
-                "render": function(data, type, full, meta) {
-                    return `${data} m<sup>2</sup>`;
-                }
-            },
-            {
-                "data": "id",
-                "render": function(data, type, full, meta) {
-                    const actions = []
-                    actions.push(
-                        `<a href='${editUrl.replace(':id', data)}' class="btn btn-icon btn-success btn-edit" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Edit"><i class="far fa-edit"></i></a>`
-                    )
-                    actions.push(
-                        `<button onclick="del(${data})" class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-dark" title="Delete"><i class="far fa-trash-alt"></i></button>`
-                    )
-                    return actions.join('&nbsp;')
-                }
-            }
-        ],
-        'drawCallback': function(settings) {
-            const api = this.api();
-            const $table = $(api.table().node());
-
-            if ($table.hasClass('cards')) {
-
-                // Create an array of labels containing all table headers
-                var labels = [];
-                $('thead th', $table).each(function() {
-                    labels.push($(this).text());
-                });
-
-                // Add data-label attribute to each cell
-                $('tbody tr', $table).each(function() {
-                    $(this).find('td').each(function(column) {
-                        $(this).attr('data-label', labels[column]);
-                    });
-                });
-
-                var max = 0;
-                $('tbody tr', $table).each(function() {
-                    max = Math.max($(this).height(), max);
-                }).height(max);
-
-            } else {
-                // Remove data-label attribute from each cell
-                $('tbody td', $table).each(function() {
-                    $(this).removeAttr('data-label');
-                });
-
-                $('tbody tr', $table).each(function() {
-                    $(this).height('auto');
-                });
-            }
-
-            $(".gallery .gallery-item").each(function() {
-                const me = $(this);
-
-                me.attr("href", me.data("image"));
-                me.attr("title", me.data("title"));
-                if (me.parent().hasClass("gallery-fw")) {
-                    me.css({
-                        height: me.parent().data("item-height"),
-                    });
-                    me.find("div").css({
-                        lineHeight: me.parent().data("item-height") + "px",
-                    });
-                }
-                me.css({
-                    backgroundImage: 'url("' + me.data("image") + '")'
-                });
-            });
-            $(".gallery").Chocolat({
-                className: "gallery",
-                imageSelector: ".gallery-item",
-            });
-        }
-    })
-
-    function del(id) {
-        swal({
-            title: "Konfirmasi",
-            text: "Apakah anda yakin ingin menghapus data?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                        method: "POST",
-                        url: "{{ route('backend.hunian.delete', ['id' => ':id']) }}".replace(':id', id),
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        }
-                    })
-                    .done(function(msg) {
-                        swal("Data berhasil dihapus", {
-                            icon: "success",
-                        })
-                        tableData.ajax.reload()
-                    })
-            }
-        })
-    }
-
-    const ctx = document.getElementById("donutChart").getContext("2d");
-    const myChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-            datasets: [{
-                data: {{json_encode($statusKepemilikans)}},
-                backgroundColor: ["#2196f3", "#63ed7a", "#ffa426"],
-                label: "Status Kepemilikan",
-            }, ],
-            labels: ["SHM", "Hak Guna", "Akta Jual Beli"],
-        },
-        options: {
-            responsive: true,
-            legend: {
-                position: "bottom",
-                display: false,
-            },
-        },
+    $(document).ready(function() {
+        $('#example').DataTable();
     });
 </script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example2').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'print']
+        });
+
+        table.buttons().container()
+            .appendTo('#example2_wrapper .col-md-6:eq(0)');
+    });
+</script>
+<!-- google maps api -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKXKdHQdtqgPVl2HI2RnUa_1bjCxRCQo4&callback=initMap" async defer></script>
+<script src="assets/plugins/gmaps/map-custom-script.js"></script>
+<!-- chart  -->
+<script src="assets/plugins/chartjs/js/Chart.min.js"></script>
+<script src="assets/plugins/chartjs/js/chartjs-custom.js"></script>
 @endsection
